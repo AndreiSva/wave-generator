@@ -41,6 +41,9 @@ fn main() {
             stdout(),
             crossterm::cursor::Show,
             terminal::Clear(terminal::ClearType::All),
+            crossterm::cursor::MoveTo(0, 0),
+            SetForegroundColor(Color::Reset),
+            Print(" ")
         ).ok();
         std::process::exit(0);
     })
