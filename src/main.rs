@@ -36,6 +36,15 @@ fn draw(amplitude : i32, wavelength : i32) {
 }
 
 fn main() {
+    ctrlc::set_handler(move || {
+        execute!(
+            stdout(),
+            crossterm::cursor::Show,
+            terminal::Clear(terminal::ClearType::All),
+        ).ok();
+        std::process::exit(0);
+    })
+    .expect("Error setting Ctrl-C handler");
     execute!(
         stdout(),
         crossterm::cursor::Hide,
